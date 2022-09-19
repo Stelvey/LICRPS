@@ -1,0 +1,12 @@
+import { warnWelcome } from "./functions.js";
+
+// Noify user that the project is WIP
+warnWelcome();
+
+// GENERATE AND RETURN BOT'S CHOICE
+
+
+// PLAY A ROUND BY COMPARING USER'S AND BOT'S CHOICES AND RETURNING THE WINNER
+
+
+// PLAY A GAME WITH SPECIFIC AMOUNT OF ROUNDS AND THEN REPORT A GAME WINNER
