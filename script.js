@@ -32,7 +32,7 @@ function getUserChoice(message = 'Please, choose Rock, Paper or Scissors!', plac
         case 'scissors':
             return 2;
         default:
-            getUserChoice('You haven\'t chosen anything! Please, try again.', 'Rock!!!');
+            return getUserChoice('You haven\'t chosen anything! Please, try again.', 'Rock!!!');
     }
 }
 
