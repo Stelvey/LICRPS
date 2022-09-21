@@ -44,18 +44,24 @@ function getUserChoice(message = 'Please, choose Rock, Paper or Sword!', placeho
     // Look for text
     for (let i = 0; i < 3; i++) {
         if (PATTERNS[i].exec(choice)) {
-            choice = PATTERNS[i].exec(choice)[0];
+            choice = PATTERNS[i].exec(choice)[0].toLowerCase();
             break;
         }
     }
 
     // Determine the choice
-    switch (choice.toLowerCase()) {
-        case 'rock' || 'r' || '🪨':
+    const toolName = {
+        rock: ['rock', 'r', '🪨'],
+        paper: ['paper', 'p', '🧻'],
+        sword: ['sword', 's', '🗡️']
+    }
+
+    switch (true) {
+        case toolName.rock.includes(choice):
             return 0;
-        case 'paper' || 'p' || '🧻':
+        case toolName.paper.includes(choice):
             return 1;
-        case 'sword' || 's' || '🗡️':
+        case toolName.sword.includes(choice):
             return 2;
         default:
             return getUserChoice('You haven\'t chosen anything! Please, try again.');
