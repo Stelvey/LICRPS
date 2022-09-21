@@ -2,9 +2,6 @@
 console.warn('This project is currently a WIP. As of now, it already works as a CLI game and a final product will contain a fully-fledged GUI.');
 console.warn('You can start a game by typing playGame(). This game is unfinished and might lack simple features. You were warned.');
 
-// TO-DO:
-// PROMPT CANCELLATION
-
 // FUNCTIONS PART
 
 // Convert 012 to RPS (emoji or text)
@@ -40,7 +37,12 @@ function getUserChoice(message = 'Please, choose Rock, Paper or Sword!', placeho
     const PATTERNS = [/rock/i, /paper/i, /sword/i];
 
     let choice = prompt(message, placeholder);
-    
+
+    // Return null on prompt cancellation
+    if (choice === null) {
+        return choice;
+    }
+
     // Look for text
     for (let i = 0; i < 3; i++) {
         if (PATTERNS[i].exec(choice)) {
@@ -106,6 +108,11 @@ function playGame(rounds = 3) {
     // Loop rounds times
     for (let i = 0; i < rounds; i++) {
         pOne = getUserChoice();
+        // Break the loop if user cancels prompt, sending appropriate warning
+        if (pOne === null) {
+            console.warn('Game was manually canceled before it could be finished!');
+            break;
+        }
         pTwo = getAiChoice();
 
         console.group(`%cRound ${i + 1}`,
