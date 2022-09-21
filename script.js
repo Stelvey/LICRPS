@@ -4,19 +4,29 @@ console.warn('You can start a game by typing playGame(). This game is unfinished
 
 // TO-DO:
 // PROMPT CANCELLATION
-// RANDOM PLACEHOLDER TEXT
 
 // FUNCTIONS PART
 
-// Convert 012 to RPS
-function convertToRps(value) {
-    switch (value) {
-        case 0:
-            return '🪨';
-        case 1:
-            return '🧻';
-        case 2:
-            return '🗡️';
+// Convert 012 to RPS (emoji or text)
+function convertToRps(value, type) {
+    if (type === 'emoji') {
+        switch (value) {
+            case 0:
+                return '🪨';
+            case 1:
+                return '🧻';
+            case 2:
+                return '🗡️';
+        }
+    } else if (type === 'text') {
+        switch (value) {
+            case 0:
+                return 'Rock! 🪨';
+            case 1:
+                return 'Paper! 🧻';
+            case 2:
+                return 'Sword! 🗡️';
+        }
     }
 }
 
@@ -26,27 +36,27 @@ function getAiChoice() {
 }
 
 // Get a user's choice and return it converted (RPS to 012)
-function getUserChoice(message = 'Please, choose Rock, Paper or Sword!', placeholder = 'Rock!') {
+function getUserChoice(message = 'Please, choose Rock, Paper or Sword!', placeholder = convertToRps(getAiChoice(), 'text')) {
     const PATTERNS = [/rock/i, /paper/i, /sword/i];
 
     let choice = prompt(message, placeholder);
     
     for (let i = 0; i < 3; i++) {
         if (PATTERNS[i].exec(choice)) {
-            choice = PATTERNS[i].exec(choice)[0].toLowerCase();
+            choice = PATTERNS[i].exec(choice)[0];
             break;
         }
     }
 
-    switch (choice) {
-        case 'rock':
+    switch (choice.toLowerCase()) {
+        case 'rock' || 'r' || '🪨':
             return 0;
-        case 'paper':
+        case 'paper' || 'p' || '🧻':
             return 1;
-        case 'sword':
+        case 'sword' || 's' || '🗡️':
             return 2;
         default:
-            return getUserChoice('You haven\'t chosen anything! Please, try again.', 'Rock!!!');
+            return getUserChoice('You haven\'t chosen anything! Please, try again.');
     }
 }
 
@@ -89,13 +99,11 @@ function playGame(rounds = 3) {
 
         console.group(`%cRound ${i + 1}`,
         'font-size: 18px; background-color: #1B2430;')
-        console.log(`%cYour ${convertToRps(pOne)} %cVS %cAI's ${convertToRps(pTwo)}`,
+        console.log(`%cYour ${convertToRps(pOne, 'emoji')} %cVS %cAI's ${convertToRps(pTwo, 'emoji')}`,
         'font-size: 16px;',
         'font-size: 24px;',
         'font-size: 16px;'
         );
-        //console.log(`V.S.`);
-        //console.log(`AI move: ${convertToRps(pTwo)}`);
 
         switch (getRound(pOne, pTwo)) {
             case 0:
