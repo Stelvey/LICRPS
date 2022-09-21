@@ -41,6 +41,7 @@ function getUserChoice(message = 'Please, choose Rock, Paper or Sword!', placeho
 
     let choice = prompt(message, placeholder);
     
+    // Look for text
     for (let i = 0; i < 3; i++) {
         if (PATTERNS[i].exec(choice)) {
             choice = PATTERNS[i].exec(choice)[0];
@@ -48,6 +49,7 @@ function getUserChoice(message = 'Please, choose Rock, Paper or Sword!', placeho
         }
     }
 
+    // Determine the choice
     switch (choice.toLowerCase()) {
         case 'rock' || 'r' || '🪨':
             return 0;
@@ -62,10 +64,12 @@ function getUserChoice(message = 'Please, choose Rock, Paper or Sword!', placeho
 
 // Evaluate the winner of a round (0 for P1, 1 for AI, 2 for Draw)
 function getRound(pOne, pTwo) {
+    // Check if it is a draw
     if (pOne === pTwo) {
         return 2;
     } 
     
+    // Determine which combination it is, return the winner
     switch (pOne + pTwo) {
         case 1:
             if (pOne === 1) {
@@ -88,11 +92,12 @@ function getRound(pOne, pTwo) {
     }
 }
 
-// PLAY A GAME WITH SPECIFIC AMOUNT OF ROUNDS AND THEN REPORT A GAME WINNER
+// Play a game with specific amount of rounds and then report a game winner
 function playGame(rounds = 3) {
     let oneWins = 0;
     let twoWins = 0;
 
+    // Loop rounds times
     for (let i = 0; i < rounds; i++) {
         pOne = getUserChoice();
         pTwo = getAiChoice();
@@ -105,6 +110,7 @@ function playGame(rounds = 3) {
         'font-size: 16px;'
         );
 
+        // Add a score to winner or announce a draw
         switch (getRound(pOne, pTwo)) {
             case 0:
                 oneWins++;
@@ -129,6 +135,7 @@ function playGame(rounds = 3) {
         }
     }
 
+    // Announce end game result
     console.log('%cEnd of the game',
     'font-size: 24px;');
 
