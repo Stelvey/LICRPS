@@ -54,7 +54,7 @@ function getUserChoice(message = 'Please, choose Rock, Paper or Sword!', placeho
         rock: ['rock', 'r', '🪨'],
         paper: ['paper', 'p', '🧻'],
         sword: ['sword', 's', '🗡️']
-    }
+    };
 
     switch (true) {
         case toolName.rock.includes(choice):
@@ -109,7 +109,7 @@ function playGame(rounds = 3) {
         pTwo = getAiChoice();
 
         console.group(`%cRound ${i + 1}`,
-        'font-size: 18px; background-color: #1B2430;')
+        'font-size: 18px; background-color: #1B2430;');
         console.log(`%cYour ${convertToRps(pOne, 'emoji')} %cVS %cAI's ${convertToRps(pTwo, 'emoji')}`,
         'font-size: 16px;',
         'font-size: 24px;',
@@ -133,6 +133,11 @@ function playGame(rounds = 3) {
                 'font-size: 14px;');
                 break;
         }
+
+        console.log(`%cYour score: ${oneWins}`,
+        'font-size: 12px;');
+        console.log(`%cAI\'s score: ${twoWins}`,
+        'font-size: 12px;');
         console.groupEnd();
 
         // Break the loop if someone has already won
@@ -143,16 +148,16 @@ function playGame(rounds = 3) {
 
     // Announce end game result
     console.log('%cEnd of the game',
-    'font-size: 24px;');
+    'font-size: 18px;');
 
     if (oneWins > twoWins) {
         console.log('%cYou are the winner!',
-        'font-size: 24px;');
+        'font-size: 16px;');
     } else if (twoWins > oneWins) {
-        console.log('%cAI wins!',
-        'font-size: 24px;');
+        console.log('%cAI is the winner!',
+        'font-size: 16px;');
     } else {
         console.log('%cIt\'s a draw!',
-        'font-size: 24px;');
+        'font-size: 16px;');
     }
 }
