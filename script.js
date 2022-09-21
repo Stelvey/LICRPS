@@ -1,6 +1,10 @@
+// 0 = ROCK        0 BEATS 2 (2nd combination)
+// 1 = PAPER       1 BEATS 0 (1st combination)
+// 2 = SCISSORS    2 BEATS 1 (3rd combination)
+
 // Warn a user that the project is WIP
 console.warn('This project is currently a WIP. As of now, it already works as a CLI game and a final product will contain a fully-fledged GUI.');
-console.warn('You can start a game by typing playGame(). This game is unfinished and might lack simple features. You were warned.');
+console.warn('You can start a game by typing playGame(). You can specify number of rounds you want to play inside the parentheses.');
 
 // FUNCTIONS PART
 
