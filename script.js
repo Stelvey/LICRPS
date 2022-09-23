@@ -48,9 +48,9 @@ function getUserChoice(message = 'Please, choose Rock, Paper or Sword!', placeho
     }
 
     // Look for text
-    for (let i = 0; i < 3; i++) {
-        if (PATTERNS[i].exec(choice)) {
-            choice = PATTERNS[i].exec(choice)[0].toLowerCase();
+    for (const PATTERN of PATTERNS) {
+        if (PATTERN.exec(choice)) {
+            choice = PATTERN.exec(choice)[0].toLowerCase();
             break;
         }
     }
