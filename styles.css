@@ -5,48 +5,84 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
 
-    
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
 a {
-    color: #51557E;
+    color: #816797;
     text-decoration-line: none;
     transition: border-color 0.3s ease;
     border-bottom: 1px solid transparent;
 }
 
 a:hover {
-    border-color: #51557E;
+    border-color: #816797;
 }
 
-.reminder {
-    height: 100vh;
+.header, .footer, .main {
+    padding: 30px;
+}
+
+.header {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 
     gap: 20px;
 }
 
-.reminder .primary {
+.header .primary {
     font-size: 48px;
     color: #D6D5A8;
 }
 
-.reminder .secondary {
+.header .secondary {
     font-size: 24px;
     color: #555555;
     font-style: italic;
 }
 
 .footer {
-    position: fixed;
-    margin-bottom: -90vh;
-
     color: #555555;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 75px;
+}
+
+.button {
+    width: 192px;
+    padding: 25px;
+    background-color: #51557E;
+    border: 1px solid #51557E;
+    border-radius: 420px;
+
+    font-size: 128px;
+    text-align: center;
+    text-shadow: black -1px 1px 8px;
+    user-select: none;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.rock {
+    color: #9BC995;
+}
+
+.paper {
+    color: #816797;
+}
+
+.sword {
+    color: #82A3A1;
 }

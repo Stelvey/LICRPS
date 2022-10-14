@@ -172,3 +172,6 @@ function playGame(rounds = 3) {
         'font-size: 16px;');
     }
 }
+
+// DOM PART
+
