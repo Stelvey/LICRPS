@@ -50,8 +50,23 @@ a:hover {
     color: #555555;
 }
 
-.main {
+.intro {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 75px;
+}
+
+.intro .button {
+    border-radius: 20px;
+    width: 240px;
+
+    font-size: 40px;
+}
+
+.main {
+    display: none;
     flex-wrap: wrap;
     justify-content: center;
 
@@ -65,6 +80,7 @@ a:hover {
     border: 1px solid #51557E;
     border-radius: 420px;
 
+    color: #D6D5A8;
     font-size: 128px;
     text-align: center;
     text-shadow: black -1px 1px 8px;

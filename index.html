@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>LICRPS</title>
 </head>
 <body>
@@ -20,14 +20,26 @@
         </div>
     </div>
 
+    <div class="intro">
+        <div class="button" data-rounds="3">
+            3 rounds
+        </div>
+        <div class="button" data-rounds="5">
+            5 rounds
+        </div>
+        <div class="button" data-rounds="7">
+            7 rounds
+        </div>
+    </div>
+
     <div class="main">
-        <div class="button rock">
+        <div class="button rock" data-choice="0">
             R
         </div>
-        <div class="button paper">
+        <div class="button paper" data-choice="1">
             P
         </div>
-        <div class="button sword">
+        <div class="button sword" data-choice="2">
             S
         </div>
     </div>
