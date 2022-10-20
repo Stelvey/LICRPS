@@ -29,7 +29,7 @@ a:hover {
 
 .header {
     display: flex;
-    flex: 1;
+    flex: 2;
 
     align-items: center;
     flex-direction: column;
@@ -48,7 +48,7 @@ a:hover {
 
 .footer {
     display: flex;
-    flex: 1;
+    flex: 2;
 
     justify-content: center;
     align-items: flex-end;
@@ -58,7 +58,7 @@ a:hover {
 
 .intro {
     display: flex;
-    flex: 2;
+    flex: 4;
 
     flex-wrap: wrap;
     justify-content: center;
@@ -77,13 +77,21 @@ a:hover {
 
 .main {
     display: none;
-    flex: 2;
+    flex: 4;
 
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
     gap: 50px;
+}
+
+.info {
+    flex: 1;
+
+    font-size: 30px;
+    text-align: center;
+    color: #555555;
 }
 
 .choice {
