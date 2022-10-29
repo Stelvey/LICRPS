@@ -102,9 +102,8 @@ function playRound(pOne, pTwo = getAiChoice()) {
     );
 
     // Update DOM too
-    roundInfo.textContent = `${round}`;
-    poneInfo.textContent = `${convertToRps(pOne, 'emoji')}`;
-    ptwoInfo.textContent = `${convertToRps(pTwo, 'emoji')}`;
+    roundInfo.textContent = `Round ${round}`;
+    resultInfo.textContent = `${convertToRps(pOne, 'emoji')} VS ${convertToRps(pTwo, 'emoji')}`;
 
     // Check if it is a draw
     if (pOne === pTwo) {
@@ -159,8 +158,13 @@ function playRound(pOne, pTwo = getAiChoice()) {
     'font-size: 12px;');
     console.groupEnd();
 
-    onewinsInfo.textContent = `${oneWins}`;
-    twowinsInfo.textContent = `${twoWins}`;
+    scoreInfos.forEach((scoreInfo) => {
+        if (scoreInfo.getAttribute('data-type') === 'oneWins') {
+            scoreInfo.textContent = `Your score: ${oneWins}`;
+        } else if (scoreInfo.getAttribute('data-type') === 'twoWins') {
+            scoreInfo.textContent = `Your score: ${twoWins}`;
+        }
+    });
 
     // Check if the game is over (early win or all rounds played)
     if (oneWins * 2 > rounds || twoWins * 2 > rounds) {
@@ -200,11 +204,9 @@ const infoDivs = document.querySelectorAll('.info');
 const choiceButtons = document.querySelectorAll('.main .button');
 const roundButtons = document.querySelectorAll('.intro .button');
 
-const roundInfo = document.querySelector('[data-type="round"]');
-const poneInfo = document.querySelector('[data-type="pOne"]');
-const ptwoInfo = document.querySelector('[data-type="pTwo"]');
-const onewinsInfo = document.querySelector('[data-type="oneWins"]');
-const twowinsInfo = document.querySelector('[data-type="twoWins"]');
+const roundInfo = document.querySelector('.round');
+const resultInfo = document.querySelector('.result');
+const scoreInfos = document.querySelectorAll('.score');
 
 // Make round buttons set amount of rounds for a game
 roundButtons.forEach((button) => {
@@ -215,7 +217,7 @@ roundButtons.forEach((button) => {
 
         infoDivs.forEach((infoDiv) => {
             infoDiv.style.display = 'flex';
-        })
+        });
     });
 })
 
