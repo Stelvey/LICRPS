@@ -101,6 +101,11 @@ function playRound(pOne, pTwo = getAiChoice()) {
     'font-size: 16px;'
     );
 
+    // Update DOM too
+    roundInfo.textContent = `${round}`;
+    poneInfo.textContent = `${convertToRps(pOne, 'emoji')}`;
+    ptwoInfo.textContent = `${convertToRps(pTwo, 'emoji')}`;
+
     // Check if it is a draw
     if (pOne === pTwo) {
         console.log('%cIt\'s a draw!',
@@ -147,12 +152,15 @@ function playRound(pOne, pTwo = getAiChoice()) {
         }
     }
 
-    // Log round footer with current scores
+    // Log round footer with current scores and update DOM too
     console.log(`%cYour score: ${oneWins}`,
     'font-size: 12px;');
     console.log(`%cAI\'s score: ${twoWins}`,
     'font-size: 12px;');
     console.groupEnd();
+
+    onewinsInfo.textContent = `${oneWins}`;
+    twowinsInfo.textContent = `${twoWins}`;
 
     // Check if the game is over (early win or all rounds played)
     if (oneWins * 2 > rounds || twoWins * 2 > rounds) {
@@ -187,8 +195,15 @@ function endGame() {
 
 const introDiv = document.querySelector('.intro');
 const mainDiv = document.querySelector('.main');
+
 const choiceButtons = document.querySelectorAll('.main .button');
 const roundButtons = document.querySelectorAll('.intro .button');
+
+const roundInfo = document.querySelector('[data-type="round"]');
+const poneInfo = document.querySelector('[data-type="pOne"]');
+const ptwoInfo = document.querySelector('[data-type="pTwo"]');
+const onewinsInfo = document.querySelector('[data-type="oneWins"]');
+const twowinsInfo = document.querySelector('[data-type="twoWins"]');
 
 // Make round buttons set amount of rounds for a game
 roundButtons.forEach((button) => {
