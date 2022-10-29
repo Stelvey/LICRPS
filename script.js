@@ -195,6 +195,7 @@ function endGame() {
 
 const introDiv = document.querySelector('.intro');
 const mainDiv = document.querySelector('.main');
+const infoDivs = document.querySelectorAll('.info');
 
 const choiceButtons = document.querySelectorAll('.main .button');
 const roundButtons = document.querySelectorAll('.intro .button');
@@ -211,6 +212,10 @@ roundButtons.forEach((button) => {
         setGame(Number(e.target.getAttribute('data-rounds')));
         introDiv.style.display = 'none';
         mainDiv.style.display = 'flex';
+
+        infoDivs.forEach((infoDiv) => {
+            infoDiv.style.display = 'flex';
+        })
     });
 })
 

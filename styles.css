@@ -87,7 +87,12 @@ a:hover {
 }
 
 .info {
+    display: none;
     flex: 1;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     font-size: 30px;
     text-align: center;
