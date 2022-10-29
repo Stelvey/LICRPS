@@ -162,7 +162,7 @@ function playRound(pOne, pTwo = getAiChoice()) {
         if (scoreInfo.getAttribute('data-type') === 'oneWins') {
             scoreInfo.textContent = `Your score: ${oneWins}`;
         } else if (scoreInfo.getAttribute('data-type') === 'twoWins') {
-            scoreInfo.textContent = `Your score: ${twoWins}`;
+            scoreInfo.textContent = `AI\'s score: ${twoWins}`;
         }
     });
 
