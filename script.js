@@ -84,7 +84,40 @@ function getUserChoice(message = 'Please, choose Rock, Paper or Sword!', placeho
 
 // Prepare a game of n rounds
 function setGame(n = 3) {
+    // Refresh all values
     rounds = n;
+    round = 0;
+    oneWins = 0;
+    twoWins = 0;
+    roundInfo.textContent = ``;
+    resultInfo.textContent = ``;
+    scoreInfos.forEach((scoreInfo) => {
+        scoreInfo.textContent = ``;
+    });
+
+    // Prepare buttons for a new game
+    choiceButtons.forEach((button) => {
+        console.log(button.className);
+        console.log(button.className.includes('rock'));
+        console.log(button.className.includes('paper'));
+        console.log(button.className.includes('sword'));
+        switch (true) {
+            case button.className.includes('rock'):
+                button.textContent = 'R';
+                break;
+            case button.className.includes('paper'):
+                button.textContent = 'P';
+                break;
+            case button.className.includes('sword'):
+                button.textContent = 'S';
+                break;
+        }
+        
+        // Make buttons play a round with a chosen weapon
+        button.onclick = (e) => playRound(Number(e.target.getAttribute('data-choice')));
+    })
+
+    showChoice();
 }
 
 // Evaluate the winner of a round (0 for P1, 1 for AI, 2 for Draw)
@@ -174,6 +207,7 @@ function playRound(pOne, pTwo = getAiChoice()) {
     }
 }
 
+// Give results, suggest playing a new game
 function endGame() {
     console.log('%cEnd of the game',
     'font-size: 18px;');
@@ -189,14 +223,32 @@ function endGame() {
         'font-size: 16px;');
     }
 
-    round = 0;
-    rounds = 0;
-    oneWins = 0;
-    twoWins = 0;
+    // Make buttons switch over to round selection
+    choiceButtons.forEach((button) => {
+        button.textContent = '↺';
+        button.onclick = () => showRound();
+    });
+}
+
+// Show round selection template
+function showRound() {
+    introDiv.style.display = 'flex';
+    mainDiv.style.display = 'none';
+    infoDivs.forEach((infoDiv) => {
+        infoDiv.style.display = 'none';
+    });
+}
+
+// Show choice selection template
+function showChoice() {
+    introDiv.style.display = 'none';
+    mainDiv.style.display = 'flex';
+    infoDivs.forEach((infoDiv) => {
+        infoDiv.style.display = 'flex';
+    });
 }
 
 // DOM PART
-
 const introDiv = document.querySelector('.intro');
 const mainDiv = document.querySelector('.main');
 const infoDivs = document.querySelectorAll('.info');
@@ -212,18 +264,6 @@ const scoreInfos = document.querySelectorAll('.score');
 roundButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
         setGame(Number(e.target.getAttribute('data-rounds')));
-        introDiv.style.display = 'none';
-        mainDiv.style.display = 'flex';
-
-        infoDivs.forEach((infoDiv) => {
-            infoDiv.style.display = 'flex';
-        });
-    });
-})
-
-// Make choice buttons run a round
-choiceButtons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        playRound(Number(e.target.getAttribute('data-choice')));
+        showChoice();
     });
 })
