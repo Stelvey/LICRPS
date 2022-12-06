@@ -4,8 +4,8 @@
 
 // Warn a user that the project is WIP
 console.warn('This project is currently a WIP. As of now, it already works as a CLI game and a final product will contain a fully-fledged GUI.');
-console.warn('You can start a game by typing setGame(). You can specify number of rounds you want to play inside the parentheses.');
-console.warn('You play each round by using playRound() function. An example would be: playRound(getUserChoice())');
+console.info('You can start a game by typing setGame(). You can specify number of rounds you want to play inside the parentheses.');
+console.info('You play each round by using playRound() function. An example would be: playRound(getUserChoice())');
 
 // VARIABLES PART
 
@@ -97,10 +97,6 @@ function setGame(n = 3) {
 
     // Prepare buttons for a new game
     choiceButtons.forEach((button) => {
-        console.log(button.className);
-        console.log(button.className.includes('rock'));
-        console.log(button.className.includes('paper'));
-        console.log(button.className.includes('sword'));
         switch (true) {
             case button.className.includes('rock'):
                 button.textContent = 'R';
@@ -184,13 +180,14 @@ function playRound(pOne, pTwo = getAiChoice()) {
         }
     }
 
-    // Log round footer with current scores and update DOM too
+    // Log round footer with current scores
     console.log(`%cYour score: ${oneWins}`,
     'font-size: 12px;');
     console.log(`%cAI\'s score: ${twoWins}`,
     'font-size: 12px;');
     console.groupEnd();
 
+    // Update DOM too!
     scoreInfos.forEach((scoreInfo) => {
         if (scoreInfo.getAttribute('data-type') === 'oneWins') {
             scoreInfo.textContent = `Your score: ${oneWins}`;
